@@ -34,7 +34,7 @@
 在 URL 后面拼接参数即可动态替换内容：
 
 ```
-https://你的域名/exam_card_h5.html?name=张三&idNumber=330106199001011234&roomNumber=040&seatNumber=08&venue=杭州市第十四中学&examNumber=330106199001011234&subject=建设工程造价案例分析&verifyTime=2026-05-17%2014:00:00
+https://你的域名/exam_card_h5.html?name=张三&idNumber=330106199001011234&roomNumber=040&seatNumber=08&venue=杭州市第十四中学&examNumber=330106199001011234&subject=建设工程造价案例分析&verifyTime=2026-05-17%2014:00:00&photoUrl=https://example.com/photo.jpg
 ```
 
 页面会自动读取 URL 参数并替换对应内容。
