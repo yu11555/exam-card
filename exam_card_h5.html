@@ -250,6 +250,28 @@
     background: linear-gradient(90deg, transparent, rgb(48,149,236), transparent);
     border-radius: 1px;
   }
+
+  /* 可编辑字段样式提示 */
+  [contenteditable="true"]:focus {
+    outline: 2px dashed rgba(48,149,236,0.5);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  .photo-box.editable {
+    cursor: pointer;
+  }
+  .photo-box.editable::after {
+    content: '点击更换照片';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    font-size: 11px;
+    text-align: center;
+    padding: 3px;
+  }
 </style>
 </head>
 <body>
@@ -259,7 +281,7 @@
   <!-- 1. 顶部通知栏 -->
   <div class="notice-bar">
     <img class="notice-icon" src="assets/ScreenShot_2026-05-26_115606_167.png" alt="">
-    <div class="notice-text" id="noticeText">
+    <div class="notice-text" id="noticeText" contenteditable="true">
       完成身份核验后，凭手机的核验成功界面、准考证、有效身份证原件进入考场
     </div>
   </div>
@@ -273,38 +295,38 @@
   </div>
 
   <!-- 3. 照片 -->
-  <div class="photo-box" id="photoBox">
+  <div class="photo-box editable" id="photoBox" onclick="document.getElementById('photoInput').click()">
     <img src="assets/ScreenShot_2026-05-26_111203_565.png" alt="photo" id="photoImg"
          onerror="this.style.display='none';document.getElementById('photoFallback').style.display='flex';">
     <div id="photoFallback" style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:36px;color:#999;background:linear-gradient(135deg,#e0e0e0,#f5f5f5);">&#x1f464;</div>
   </div>
 
   <!-- 标题 -->
-  <div class="main-title" id="headerTitle">2026年度监理工程师考试</div>
+  <div class="main-title" id="headerTitle" contenteditable="true">2026年度监理工程师考试</div>
 
   <!-- 6. 状态（对勾 + 文字） -->
   <div class="check-badge" id="statusText">
     <span class="circle"><span class="check"></span></span>
-    <span class="status-label">身份核验成功</span>
+    <span class="status-label" contenteditable="true">身份核验成功</span>
   </div>
 
   <!-- 4. 蓝色信息卡（姓名+身份证 | 考场号+座位号） -->
   <div class="id-info-card">
     <div class="id-info-left" id="idInfoLeft">
-      <div class="name" id="personName">胡xx</div>
-      <div class="id-num" id="idNumber">（430304199011561788）</div>
+      <div class="name" id="personName" contenteditable="true">胡xx</div>
+      <div class="id-num" id="idNumber" contenteditable="true">（430304199011561788）</div>
     </div>
     <div class="id-info-right" id="idInfoRight">
-      <div class="room-item" id="roomInfo">考场号：040<br>座位号：08</div>
+      <div class="room-item" id="roomInfo" contenteditable="true">考场号：040<br>座位号：08</div>
     </div>
   </div>
 
   <!-- 5. 考点详情 -->
   <div class="exam-detail" id="examDetail">
-    <p><span class="label">考点名称：&nbsp;&nbsp;&nbsp;</span>杭州市交通职业高级中学</p>
-    <p><span class="label">准考证号：&nbsp;&nbsp;&nbsp;</span>430304199011531788</p>
-    <p><span class="label">科目：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="margin-left:20px;">建设工程监理案例分析</span></p>
-    <p><span class="label">认证时间：&nbsp;&nbsp;</span><span style="margin-left:5px;">2026年05月17日 13:31:58</span></p>
+    <p><span class="label">考点名称：&nbsp;&nbsp;&nbsp;</span><span contenteditable="true">杭州市交通职业高级中学</span></p>
+    <p><span class="label">准考证号：&nbsp;&nbsp;&nbsp;</span><span contenteditable="true">430304199011531788</span></p>
+    <p><span class="label">科目：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="margin-left:20px;"><span contenteditable="true">建设工程监理案例分析</span></span></p>
+    <p><span class="label">认证时间：&nbsp;&nbsp;</span><span style="margin-left:5px;"><span contenteditable="true">2026年05月17日 13:31:58</span></span></p>
   </div>
 
 </div>
@@ -387,6 +409,7 @@
     }
   })();
 </script>
+<input type="file" id="photoInput" accept="image/*" style="display:none" onchange="var f=this.files[0];if(f){var r=new FileReader();r.onload=function(e){document.getElementById('photoImg').src=e.target.result;document.getElementById('photoImg').style.display='';document.getElementById('photoFallback').style.display='none';};r.readAsDataURL(f);}">
 
 </body>
 </html>
