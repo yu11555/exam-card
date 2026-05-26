@@ -331,27 +331,6 @@
     document.getElementById('headerDate').innerHTML = y + '年<br>' + m + '月' + d + '日';
   })();
 
-  // ===== 从 URL 参数自动读取 =====
-  (function readUrlParams() {
-    var params = new URLSearchParams(window.location.search);
-    var data = {};
-    if (params.get('name')) data.name = params.get('name');
-    if (params.get('idNumber')) data.idNumber = params.get('idNumber');
-    if (params.get('roomNumber')) data.roomNumber = params.get('roomNumber');
-    if (params.get('seatNumber')) data.seatNumber = params.get('seatNumber');
-    if (params.get('venue')) data.venue = params.get('venue');
-    if (params.get('examNumber')) data.examNumber = params.get('examNumber');
-    if (params.get('subject')) data.subject = params.get('subject');
-    if (params.get('verifyTime')) data.verifyTime = params.get('verifyTime');
-    if (params.get('noticeText')) data.noticeText = params.get('noticeText');
-    if (params.get('title')) data.title = params.get('title');
-    if (params.get('status')) data.status = params.get('status');
-    if (params.get('photoUrl')) data.photoUrl = params.get('photoUrl');
-    if (Object.keys(data).length > 0) {
-      updateCard(data);
-    }
-  })();
-
   // ===== 数据修改接口 =====
   window.updateCard = function(data) {
     if (data.noticeText !== undefined)
@@ -386,6 +365,27 @@
       document.getElementById('photoFallback').style.display = 'none';
     }
   };
+
+  // ===== 从 URL 参数自动读取 =====
+  (function readUrlParams() {
+    var params = new URLSearchParams(window.location.search);
+    var data = {};
+    if (params.get('name')) data.name = params.get('name');
+    if (params.get('idNumber')) data.idNumber = params.get('idNumber');
+    if (params.get('roomNumber')) data.roomNumber = params.get('roomNumber');
+    if (params.get('seatNumber')) data.seatNumber = params.get('seatNumber');
+    if (params.get('venue')) data.venue = params.get('venue');
+    if (params.get('examNumber')) data.examNumber = params.get('examNumber');
+    if (params.get('subject')) data.subject = params.get('subject');
+    if (params.get('verifyTime')) data.verifyTime = params.get('verifyTime');
+    if (params.get('noticeText')) data.noticeText = params.get('noticeText');
+    if (params.get('title')) data.title = params.get('title');
+    if (params.get('status')) data.status = params.get('status');
+    if (params.get('photoUrl')) data.photoUrl = params.get('photoUrl');
+    if (Object.keys(data).length > 0) {
+      updateCard(data);
+    }
+  })();
 </script>
 
 </body>
