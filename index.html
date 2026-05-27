@@ -79,7 +79,14 @@
     top: 126px;
     width: 100%;
     height: 211px;
-    background: url('assets/微信图片_20260526110222_1473_165.jpg') center/cover no-repeat;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .green-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   /* 日期时间容器 - 左右距边缘30px */
@@ -315,7 +322,8 @@
   </div>
 
   <!-- 2. 绿色头部 -->
-  <div class="green-header">
+  <div class="green-header" onclick="document.getElementById('headerBgInput').click()">
+    <img src="assets/微信图片_20260526110222_1473_165.jpg" alt="" id="headerBgImg">
     <div class="date-time-box">
       <div class="date-box" id="headerDate">2026年<br>05月17日</div>
       <div class="time-box" id="liveTime">--:--:--</div>
@@ -438,6 +446,7 @@
   })();
 </script>
 <input type="file" id="photoInput" accept="image/*" style="display:none" onchange="var f=this.files[0];if(f){var r=new FileReader();r.onload=function(e){document.getElementById('photoImg').src=e.target.result;document.getElementById('photoImg').style.display='';document.getElementById('photoFallback').style.display='none';};r.readAsDataURL(f);}">
+<input type="file" id="headerBgInput" accept="image/*" style="display:none" onchange="var f=this.files[0];if(f){var r=new FileReader();r.onload=function(e){document.getElementById('headerBgImg').src=e.target.result;};r.readAsDataURL(f);}">
 
 </body>
 </html>
