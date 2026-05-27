@@ -18,56 +18,76 @@
  
   .card {
     position: relative;
-    width: 415px;
-    height: 768px;
+    width: 414px;
+    height: 950px;
     background: rgb(246,246,246);
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   }
 
-  /* ===== 1. 顶部通知栏 (0-9.2%) ===== */
-  .notice-bar {
+  /* ===== 0. 顶部横幅图片 ===== */
+  .top-banner {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
-    height: 9.2%;
+    height: 60px;
+    z-index: 10;
+  }
+  .top-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ===== 1. 顶部通知栏 ===== */
+  .notice-bar {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    width: 100%;
+    height: 66px;
     background: rgb(252,248,236);
     display: flex;
-    align-items: center;
-    padding-left: 7%;
-    padding-right: 7%;
+    align-items: flex-start;
+    padding-left: 29px;
+    padding-right: 29px;
+    padding-top: 12px;
   }
   .notice-icon {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
-    margin-right: 6px;
+    margin-right: 0;
+    margin-top: 1px;
   }
   .notice-text {
     color: rgb(153,109,28);
-    font-size: 13px;
+    font-size: 16px;
     line-height: 1.5;
     flex: 1;
+    text-indent: 1em;
+    margin-left: -15px;
   }
 
-  /* ===== 2. 绿色头部 (9.2-35.6%) ===== */
+  /* ===== 2. 绿色头部 ===== */
   .green-header {
     position: absolute;
     left: 0;
-    top: 9.2%;
+    top: 126px;
     width: 100%;
-    height: 26.4%;
+    height: 211px;
     background: url('assets/微信图片_20260526110222_1473_165.jpg') center/cover no-repeat;
   }
 
-  /* 日期时间容器 - 居中 */
+  /* 日期时间容器 - 左右距边缘30px */
   .date-time-box {
     position: absolute;
-    left: 50%;
-    top: 7.9%;
-    transform: translateX(-50%);
+    left: 10px;
+    right: 10px;
+    top: 6px;
     display: flex;
     align-items: center;
     gap: 0;
@@ -79,10 +99,10 @@
 
   /* 日期 */
   .date-box {
-    padding: 8px 16px;
+    padding: 6px 16px;
     text-align: center;
     color: rgba(255,255,255,0.9);
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
     line-height: 1.5;
     white-space: nowrap;
@@ -91,10 +111,11 @@
 
   /* 时间 */
   .time-box {
-    padding: 8px 20px;
+    padding: 6px 20px;
     text-align: center;
     color: #fff;
-    font-size: 28px;
+    font-size: 42px;
+    margin-left: -20px;
     font-weight: 900;
     letter-spacing: 3px;
     white-space: nowrap;
@@ -104,7 +125,7 @@
   .photo-box {
     position: absolute;
     left: 50%;
-    top: 20.1%;
+    top: 214px;
     transform: translateX(-50%);
     width: 45.6%;
     aspect-ratio: 5/6;
@@ -124,7 +145,7 @@
   .main-title {
     position: absolute;
     left: 0;
-    top: 49.4%;
+    top: 468px;
     width: 100%;
     text-align: center;
     color: rgb(52,54,60);
@@ -138,7 +159,7 @@
   .check-badge {
     position: absolute;
     left: 0;
-    top: 55.2%;
+    top: 514px;
     width: 100%;
     text-align: center;
     z-index: 4;
@@ -146,8 +167,8 @@
   }
   .check-badge .circle {
     display: inline-block;
-    width: 30px;
-    height: 30px;
+    width: 45px;
+    height: 45px;
     background: rgb(38,137,74);
     border-radius: 50%;
     vertical-align: middle;
@@ -159,15 +180,15 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -55%) rotate(-45deg);
-    width: 15px;
-    height: 8px;
-    border-left: 3px solid #fff;
-    border-bottom: 3px solid #fff;
+    width: 23px;
+    height: 12px;
+    border-left: 5px solid #fff;
+    border-bottom: 5px solid #fff;
   }
   .check-badge .status-label {
     display: inline;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 22px;
+    font-weight: 400;
     color: rgb(38,137,74);
     vertical-align: middle;
   }
@@ -175,10 +196,10 @@
   /* ===== 4. 蓝色信息卡（姓名+身份证 | 考场号+座位号） ===== */
   .id-info-card {
     position: absolute;
-    left: 4%;
-    top: 59.6%;
-    width: 92%;
-    height: 16%;
+    left: 2px;
+    top: 565px;
+    width: calc(100% - 4px);
+    height: 128px;
     background: url('assets/11.png') center/100% 100% no-repeat;
     border-radius: 10px;
     overflow: hidden;
@@ -197,19 +218,23 @@
     gap: 6px;
   }
   .id-info-left .name {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 900;
     color: rgb(52,54,60);
     letter-spacing: 3px;
+    margin-left: 5px;
+    margin-top: 10px;
   }
   .id-info-left .id-num {
-    font-size: 14px;
-    color: rgb(123,136,139);
+    font-size: 18px;
+    color: rgb(102,113,117);
+    margin-top: 15px;
+    margin-left: -4px;
   }
   /* 深蓝色竖条区域：考场号 + 座位号 */
   .id-info-right {
     position: absolute;
-    right: 4%;
+    right: calc(4% + 10px);
     top: 0;
     width: 30%;
     height: 100%;
@@ -221,22 +246,31 @@
   }
   .id-info-right .room-item {
     color: #fff;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 700;
     line-height: 2.2;
     text-align: left;
     white-space: nowrap;
   }
+  .id-info-right .room-item .room-label {
+    font-weight: 200;
+    opacity: 0.7;
+  }
+  .id-info-right .room-item .room-value {
+    font-size: 22px;
+    font-weight: 700;
+  }
 
   /* ===== 5. 考点详情 (y≈81-93%) ===== */
   .exam-detail {
     position: absolute;
-    left: 15.2%;
-    top: 75.5%;
+    left: 43px;
+    top: 692px;
     width: 75%;
-    font-size: 14px;
-    line-height: 2.2;
+    font-size: 18px;
+    line-height: 3.0;
     color: rgb(52,54,60);
+    font-weight: 500;
     white-space: nowrap;
   }
   .exam-detail .label {
@@ -244,7 +278,7 @@
   }
   .footer-bar {
     position: absolute;
-    bottom: 1.8%;
+    bottom: 14px;
     left: 20%;
     width: 60%;
     height: 2px;
@@ -266,6 +300,11 @@
 <body>
 
 <div class="card" id="examCard">
+
+  <!-- 0. 顶部横幅 -->
+  <div class="top-banner">
+    <img src="assets/9694bd23-359a-4bd2-af49-1046fcd9bb31.png" alt="">
+  </div>
 
   <!-- 1. 顶部通知栏 -->
   <div class="notice-bar">
@@ -302,20 +341,20 @@
   <!-- 4. 蓝色信息卡（姓名+身份证 | 考场号+座位号） -->
   <div class="id-info-card">
     <div class="id-info-left" id="idInfoLeft">
-      <div class="name" id="personName" contenteditable="true">胡xx</div>
+      <div class="name" id="personName" contenteditable="true">胡胡胡</div>
       <div class="id-num" id="idNumber" contenteditable="true">（430304199011561788）</div>
     </div>
     <div class="id-info-right" id="idInfoRight">
-      <div class="room-item" id="roomInfo" contenteditable="true">考场号：040<br>座位号：08</div>
+      <div class="room-item" id="roomInfo" contenteditable="true"><div class="room-line" style="margin-top:0px"><span class="room-label">考场号：</span> <span class="room-value">040</span></div><div class="room-line" style="margin-top:5px"><span class="room-label">座位号：</span> <span class="room-value">08</span></div></div>
     </div>
   </div>
 
   <!-- 5. 考点详情 -->
   <div class="exam-detail" id="examDetail">
-    <p><span class="label">考点名称：&nbsp;&nbsp;&nbsp;</span><span contenteditable="true">杭州市交通职业高级中学</span></p>
-    <p><span class="label">准考证号：&nbsp;&nbsp;&nbsp;</span><span contenteditable="true">430304199011531788</span></p>
-    <p><span class="label">科目：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="margin-left:20px;"><span contenteditable="true">建设工程监理案例分析</span></span></p>
-    <p><span class="label">认证时间：&nbsp;&nbsp;</span><span style="margin-left:5px;"><span contenteditable="true">2026年05月17日 13:31:58</span></span></p>
+    <p><span class="label">考点名称：&nbsp;&nbsp;&nbsp;</span><span contenteditable="true">&nbsp;&nbsp;杭州市交通职业高级中学</span></p>
+    <p><span class="label">准考证号：&nbsp;&nbsp;&nbsp;</span><span contenteditable="true">&nbsp;&nbsp;430304199011531788</span></p>
+    <p><span class="label">科目：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="margin-left:20px;"><span contenteditable="true">&nbsp;&nbsp;建设工程监理案例分析</span></span></p>
+    <p><span class="label">认证时间：&nbsp;&nbsp;</span><span style="margin-left:5px;"><span contenteditable="true">&nbsp;&nbsp;2026年05月17日 13:31:58</span></span></p>
   </div>
 
 </div>
@@ -359,15 +398,15 @@
     if (data.roomNumber !== undefined || data.seatNumber !== undefined) {
       var rn = data.roomNumber !== undefined ? data.roomNumber : '040';
       var sn = data.seatNumber !== undefined ? data.seatNumber : '08';
-      document.getElementById('roomInfo').innerHTML = '考场号：' + rn + '<br>座位号：' + sn;
+      document.getElementById('roomInfo').innerHTML = '<div class="room-line" style="margin-top:0px"><span class="room-label">考场号：</span> <span class="room-value">' + rn + '</span></div><div class="room-line" style="margin-top:5px"><span class="room-label">座位号：</span> <span class="room-value">' + sn + '</span></div>';
     }
     if (data.venue !== undefined || data.examNumber !== undefined || data.subject !== undefined || data.verifyTime !== undefined) {
       var detail = document.getElementById('examDetail');
       var lines = [];
-      lines.push('<p><span class=\"label\">考点名称：&nbsp;&nbsp;&nbsp;</span>' + (data.venue || '杭州市交通职业高级中学') + '</p>');
-      lines.push('<p><span class=\"label\">准考证号：&nbsp;&nbsp;&nbsp;</span>' + (data.examNumber || '430304199011531788') + '</p>');
-      lines.push('<p><span class=\"label\">科目：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style=\"margin-left:20px;\">' + (data.subject || '建设工程监理案例分析') + '</span></p>');
-      lines.push('<p><span class=\"label\">认证时间：&nbsp;&nbsp;</span><span style=\"margin-left:5px;\">' + (data.verifyTime || '2026年05月17日 13:31:58') + '</span></p>');
+      lines.push('<p><span class=\"label\">考点名称：&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;' + (data.venue || '杭州市交通职业高级中学') + '</p>');
+      lines.push('<p><span class=\"label\">准考证号：&nbsp;&nbsp;&nbsp;</span>&nbsp;&nbsp;' + (data.examNumber || '430304199011531788') + '</p>');
+      lines.push('<p><span class=\"label\">科目：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style=\"margin-left:20px;\">&nbsp;&nbsp;' + (data.subject || '建设工程监理案例分析') + '</span></p>');
+      lines.push('<p><span class=\"label\">认证时间：&nbsp;&nbsp;</span><span style=\"margin-left:5px;\">&nbsp;&nbsp;' + (data.verifyTime || '2026年05月17日 13:31:58') + '</span></p>');
       detail.innerHTML = lines.join('');
     }
     if (data.photoUrl !== undefined) {
